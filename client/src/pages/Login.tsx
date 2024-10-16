@@ -44,7 +44,12 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error during login:", error);
-      setModalMessage("An error occurred during login.");
+      
+      if ((error as any).response && (error as any).response.status === 404) {
+        setModalMessage("User not found.");
+      } else {
+        setModalMessage("An error occurred during login.");
+      }
       setShowModal(true);
     }
   };
@@ -97,6 +102,7 @@ const Login = () => {
              <span>Login</span>
             </button>
             </div>
+            
 
           </form>
             </div>

@@ -1,5 +1,5 @@
 
-
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 
 const PhoneDialer: React.FC = () => {
@@ -75,6 +75,10 @@ const PhoneDialer: React.FC = () => {
 
     return (
         <section>
+            <div style={{display: 'flex', justifyContent: 'flex-end', paddingRight: '25px', paddingTop: '25px', fontWeight: 'bold'}}>
+                <Link to='/' id='logout'>Logout</Link>
+            </div>
+
             <h1 id='phoneH1'>Phone Dialer</h1>
 
             <div className="container">
@@ -87,16 +91,31 @@ const PhoneDialer: React.FC = () => {
                 />
             </div>
 
+        
+
+            {/* Modals would go here */}
+            <div className='container'>
+            {modal === 'addToDncModal' && <div style={{color: 'red', marginTop: '10px', fontWeight: 'bold'}}>{message}</div>}
+            </div>
+            
+            <div className='container'>
+            {modal === 'dncModal' && <div style={{color: 'red', marginTop: '10px', fontWeight: 'bold'}}>This number is on the DNC</div>}
+
+            </div>
+
+            <div className='container'>
+            {modal === 'dialingModal' && <div style={{marginTop: '10px', fontWeight: 'bold'}}>Dialing...</div>}
+
+            </div>
+
+            <div className='container'>
+            {modal === 'enterNumberModal' && <div style={{color: 'red', marginTop: '10px', fontWeight: 'bold'}}>Please enter a valid phone number</div>}
+            </div>
+
             <div className="container">
                 <button id='callButton' onClick={dialNumber}>Call</button>
                 <button id='dncButton' onClick={addToDNC}>DNC</button>
             </div>
-
-            {/* Modals would go here */}
-            {modal === 'addToDncModal' && <div>{message}</div>}
-            {modal === 'dncModal' && <div>This number is on the DNC</div>}
-            {modal === 'dialingModal' && <div>Dialing...</div>}
-            {modal === 'enterNumberModal' && <div>Please enter a valid phone number</div>}
         </section>
     );
 }
