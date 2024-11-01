@@ -41,16 +41,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-// Uncomment to seed database
-// (async () => {
-//   try {
-//     await sequelize.sync({ force: true }); // Drop & recreate tables
-//     await seedAuthorityIssues(); // Seed the database with issues
-//     console.log("Database seeded successfully.");
-//   } catch (error) {
-//     console.error("Failed to seed database:", error);
-//   }
-// })();
 
 (async () => {
   try {
